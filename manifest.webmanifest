@@ -1,0 +1,16 @@
+{
+  "name": "词力闯关 · 雅思单词",
+  "short_name": "词力闯关",
+  "description": "像素风雅思单词记忆闯关，内置《雅思词汇真经》词库，支持离线使用",
+  "lang": "zh-CN",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#f6efdc",
+  "theme_color": "#f6efdc",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" }
+  ]
+}
