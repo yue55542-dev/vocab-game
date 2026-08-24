@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
+  <rect x="8" y="8" width="496" height="496" rx="72" fill="#f6efdc" stroke="#3b2d1f" stroke-width="20"/>
+  <!-- 像素 W -->
+  <g fill="#3b2d1f">
+    <rect x="136" y="136" width="48" height="48"/>
+    <rect x="328" y="136" width="48" height="48"/>
+    <rect x="136" y="184" width="48" height="48"/>
+    <rect x="328" y="184" width="48" height="48"/>
+    <rect x="136" y="232" width="48" height="48"/>
+    <rect x="328" y="232" width="48" height="48"/>
+    <rect x="136" y="280" width="48" height="48"/>
+    <rect x="232" y="280" width="48" height="48"/>
+    <rect x="328" y="280" width="48" height="48"/>
+    <rect x="184" y="328" width="48" height="48"/>
+    <rect x="280" y="328" width="48" height="48"/>
+  </g>
+  <!-- 像素星 -->
+  <g fill="#f2b84b">
+    <rect x="372" y="144" width="24" height="24"/>
+    <rect x="396" y="120" width="24" height="24"/>
+    <rect x="420" y="144" width="24" height="24"/>
+    <rect x="396" y="168" width="24" height="24"/>
+  </g>
+</svg>
