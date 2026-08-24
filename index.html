@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>词力闯关 · 雅思单词像素版</title>
+<meta name="description" content="像素风雅思单词记忆闯关，内置《雅思词汇真经》词库">
+<meta name="theme-color" content="#f6efdc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="词力闯关">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/icon-180.png">
+<link rel="icon" type="image/png" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=ZCOOL+KuaiLe&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<div class="sky">
+  <div class="cloud c1">☁</div>
+  <div class="cloud c2">☁</div>
+  <div class="sun">☀</div>
+</div>
+
+<header class="topbar">
+  <button class="pixel-btn logo-btn" id="btn-home">🎮 词力闯关</button>
+  <div class="top-actions">
+    <button class="pixel-btn icon-btn" id="btn-mute" title="音效开关">🔊</button>
+  </div>
+</header>
+
+<main id="app">
+
+  <!-- ===== 首页 ===== -->
+  <section class="screen active" id="screen-home">
+    <div class="home-title pixel-font">WORD QUEST</div>
+    <div class="home-sub">雅思单词 · 轻松闯关</div>
+    <div class="stat-row">
+      <div class="stat-card pixel-panel good"><div class="stat-num" id="stat-mastered">0</div><div class="stat-label">已掌握</div></div>
+      <div class="stat-card pixel-panel slow"><div class="stat-num" id="stat-due">0</div><div class="stat-label">待复习</div></div>
+      <div class="stat-card pixel-panel bad"><div class="stat-num" id="stat-wrong">0</div><div class="stat-label">错词本</div></div>
+    </div>
+    <div class="group-picker">
+      <div class="picker-label">选择要学习的词组</div>
+      <div id="group-chips" class="chips"></div>
+    </div>
+    <div class="home-btns">
+      <button class="pixel-btn big primary" id="btn-study">▶ 开始新一组（10 词）</button>
+      <button class="pixel-btn big" id="btn-review-due">🔁 复习到期</button>
+      <button class="pixel-btn big" id="btn-wrongbook">📕 错词本</button>
+      <button class="pixel-btn big" id="btn-import">⚙ 词表与数据</button>
+    </div>
+    <div class="tip">⚡ 3 秒内答对 = 熟练通关 ｜ 🐢 超过 3 秒 = 不熟练 ｜ 💥 答错 = 进错词本</div>
+  </section>
+
+  <!-- ===== 学习 / 复习 ===== -->
+  <section class="screen" id="screen-session">
+    <div class="session-head">
+      <div class="session-label" id="session-label">新学一组</div>
+      <div class="session-progress">
+        <span class="session-count" id="session-count">1 / 10</span>
+        <div class="pbar"><div class="pbar-fill" id="pbar-fill"></div></div>
+      </div>
+      <button class="pixel-btn small" id="btn-quit">退出</button>
+    </div>
+
+    <div class="card-zone">
+      <div class="word-card pixel-panel" id="word-card">
+        <div class="word-big" id="word-text">abundant</div>
+        <div class="word-phonetic" id="word-phonetic">/əˈbʌndənt/</div>
+        <button class="pixel-btn small speaker" id="btn-speak">🔊 再读一遍</button>
+      </div>
+      <div class="options" id="options"></div>
+      <button class="pixel-btn ghost" id="btn-skip">😅 不认识 / 跳过</button>
+    </div>
+
+    <div class="feedback-overlay" id="feedback-overlay">
+      <div class="pixel-panel feedback-panel" id="feedback-panel">
+        <div class="feedback-head" id="feedback-head">✔ 正确！</div>
+        <div class="feedback-meaning-block" id="feedback-meaning"></div>
+        <div class="feedback-sentence" id="feedback-sentence"></div>
+        <div class="feedback-sentence-cn" id="feedback-sentence-cn"></div>
+        <div class="feedback-notes" id="feedback-notes"></div>
+        <div class="feedback-badge" id="feedback-badge">⚡ 3 秒内答对 · 熟练！</div>
+        <button class="pixel-btn big primary" id="btn-next">继续 ➜</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== 结算 ===== -->
+  <section class="screen" id="screen-summary">
+    <div class="summary-title pixel-font">ROUND CLEAR!</div>
+    <div class="summary-stats">
+      <div class="stat-card pixel-panel good"><div class="stat-num" id="sum-fast">0</div><div class="stat-label">⚡ 熟练</div></div>
+      <div class="stat-card pixel-panel slow"><div class="stat-num" id="sum-slow">0</div><div class="stat-label">🐢 不熟练</div></div>
+      <div class="stat-card pixel-panel bad"><div class="stat-num" id="sum-wrong">0</div><div class="stat-label">💥 错词</div></div>
+    </div>
+    <div class="summary-lists" id="summary-lists"></div>
+    <div class="home-btns">
+      <button class="pixel-btn big primary" id="btn-again">再来一组</button>
+      <button class="pixel-btn big" id="btn-home2">返回主页</button>
+    </div>
+  </section>
+
+  <!-- ===== 错词本 ===== -->
+  <section class="screen" id="screen-wrongbook">
+    <div class="page-title pixel-font">WRONG BOOK</div>
+    <div class="wrong-actions">
+      <button class="pixel-btn big primary" id="btn-review-wrong">▶ 复习错词</button>
+      <button class="pixel-btn big" id="btn-wb-back">返回</button>
+    </div>
+    <div class="wrong-list" id="wrong-list"></div>
+  </section>
+
+  <!-- ===== 词表与数据 ===== -->
+  <section class="screen" id="screen-import">
+    <div class="page-title pixel-font">DATA</div>
+    <div class="import-intro">
+      当前词库：<b id="import-count">0</b> 个单词。<br>
+      把《雅思词汇真经》的词表整理成下面的格式（CSV 或 JSON 都行）粘贴进来，点“导入并合并”即可加入词库，学习进度会保留：
+    </div>
+    <div class="import-format">单词, 音标, 中文释义, 英文例句, 例句翻译, 分组</div>
+    <textarea id="import-area" rows="8" spellcheck="false" placeholder="abundant, /əˈbʌndənt/, adj. 丰富的, Rain makes the pond abundant with frogs., 雨水让池塘里满是青蛙。, 示例·A"></textarea>
+    <div class="import-btns">
+      <button class="pixel-btn big primary" id="btn-do-import">导入并合并</button>
+      <button class="pixel-btn big" id="btn-download-template">下载 CSV 模板</button>
+      <button class="pixel-btn big" id="btn-export">导出进度备份</button>
+      <button class="pixel-btn big danger" id="btn-reset">清空全部进度</button>
+      <button class="pixel-btn big" id="btn-import-back">返回</button>
+    </div>
+  </section>
+
+</main>
+
+<div id="toast" class="toast"></div>
+<div id="confetti"></div>
+
+<script src="js/data.js"></script>
+<script src="js/app.js"></script>
+</body>
+</html>
